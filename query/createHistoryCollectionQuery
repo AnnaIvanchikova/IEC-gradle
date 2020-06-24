@@ -1,0 +1,40 @@
+db.createCollection("History", {
+
+	validator: {
+
+		$jsonSchema: {
+
+			bsonType: "object",
+			properties: {
+				dateTime: {
+					bsonType: "date",
+					description: "must be a ISO date time"
+				},
+				type: {
+					enum: [ "UPDATE", "COMPOSE" ],
+					description: "can only be one of the enum values"
+				},
+				changes: {
+					bsonType: "object",
+					properties: {
+						fieldName: {
+							bsonType: "string",
+							description: "must be a string"
+						},
+						oldValue: {
+							bsonType: "string",
+							description: "must be a string"
+						},
+						newValue: {
+							bsonType: "string",
+							description: "must be a string"
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+})

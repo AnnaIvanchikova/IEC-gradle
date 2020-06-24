@@ -1,0 +1,47 @@
+db.createCollection("Activity", {
+
+	validator: {
+
+		$jsonSchema: {
+
+			bsonType: "object",
+			required: [ "title", "summary", "description", "startDateTime", "endDateTime" ],
+			properties: {
+				id: {
+					bsonType: "objectId",
+					description: "must be an objectId"
+				},
+				title: {
+					bsonType: "string",
+					maximum: 100,
+					description: "must be a string with maximum size 100 and is required"
+				},
+				summary: {
+					bsonType: "string",
+					maximum: 25,
+					description: "must be a string with maximum size 25 and is required"
+				},
+				description: {
+					bsonType: "string",
+					maximum: 200,
+					description: "must be a string with maximum size 200 and is required"
+				},
+				startDateTime: {
+					bsonType: "date",
+					description: "must be a ISO date time and is required"
+				},
+				endDateTime: {
+					bsonType: "date",
+					description: "must be a ISO date time and is required"
+				},
+				info: {
+					bsonType: "string",
+					description: "must be a string without any constraints"
+				}
+			}
+
+		}
+
+	}
+
+})
